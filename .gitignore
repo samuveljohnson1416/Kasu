@@ -1,11 +1,36 @@
+# Dependencies
 node_modules/
-.project_id
-.github_repo
+.pnp
+.pnp.js
+
+# Environment & Config
 .env
 .env.*
+!.env.example
+.project_id
+.github_repo
+
+# Android & Gradle
 .gradle/
+**/.gradle/
 **/build/
 local.properties
 *.apk
+*.aab
+*.keystore.user
+
+# IDE & OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Deployment & Build outputs
+.vercel/
+dist/
+.output/
+.nitro/
+.node_modules.lock
 
 
