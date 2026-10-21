@@ -3,3 +3,9 @@ node_modules/
 .github_repo
 .env
 .env.*
+.gradle/
+**/build/
+local.properties
+*.apk
+
+
