@@ -46,26 +46,65 @@ export function SpendApp() {
           </div>
           {tab === "budget" ? <BudgetScreen /> : null}
           {tab === "reports" ? (
-            <Suspense fallback={<p className="px-4 pt-8 text-sm text-muted">Opening reports…</p>}>
+            <Suspense fallback={<p className="mono px-4 pt-8 text-xs text-muted">Loading reports…</p>}>
               <ReportsScreen />
             </Suspense>
           ) : null}
         </main>
-        <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card pb-[env(safe-area-inset-bottom)]">
-          <div className="mx-auto grid h-16 max-w-md grid-cols-5">
-            <NavButton label="Home" active={tab === "home"} onClick={() => setTab("home")} icon={<House className="size-5" strokeWidth={1.75} />} />
-            <NavButton label="Log" active={tab === "history"} onClick={() => setTab("history")} icon={<List className="size-5" strokeWidth={1.75} />} />
-            <button type="button" className="press flex min-w-0 flex-col items-center justify-end pb-1 text-[11px] font-medium text-muted min-[380px]:text-xs" onClick={() => openAdd(null)}>
-              <span className="-mt-6 grid size-12 place-items-center rounded-full bg-teal text-paper">
-                <Plus className="size-6" strokeWidth={1.75} />
+
+        {/* ── Bottom nav ─────────────────────────────────────────────── */}
+        <nav
+          className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-card pb-[env(safe-area-inset-bottom)]"
+          style={{ backgroundImage: "linear-gradient(to top, #141414, #1a1a1a)" }}
+        >
+          {/* Amber top-edge accent */}
+          <div className="absolute inset-x-0 top-0 h-px bg-teal opacity-30" />
+
+          <div className="mx-auto grid h-14 max-w-md grid-cols-5 px-1">
+            <NavButton
+              label="Home"
+              active={tab === "home"}
+              onClick={() => setTab("home")}
+              icon={<House className="size-[18px]" strokeWidth={1.75} />}
+            />
+            <NavButton
+              label="Log"
+              active={tab === "history"}
+              onClick={() => setTab("history")}
+              icon={<List className="size-[18px]" strokeWidth={1.75} />}
+            />
+
+            {/* Centre FAB */}
+            <button
+              type="button"
+              id="add-transaction-btn"
+              className="press flex min-w-0 flex-col items-center justify-end pb-1.5"
+              onClick={() => openAdd(null)}
+            >
+              <span className="relative -mt-5 grid size-11 place-items-center rounded-sm bg-teal glow-amber">
+                <Plus className="size-5 text-[#0d0d0d]" strokeWidth={2.5} />
               </span>
-              Add
+              <span className="section-tag mt-1" style={{ color: "var(--color-teal)" }}>
+                Add
+              </span>
             </button>
-            <NavButton label="Budget" active={tab === "budget"} onClick={() => setTab("budget")} icon={<Wallet className="size-5" strokeWidth={1.75} />} />
-            <NavButton label="Reports" active={tab === "reports"} onClick={() => setTab("reports")} icon={<ChartPie className="size-5" strokeWidth={1.75} />} />
+
+            <NavButton
+              label="Budget"
+              active={tab === "budget"}
+              onClick={() => setTab("budget")}
+              icon={<Wallet className="size-[18px]" strokeWidth={1.75} />}
+            />
+            <NavButton
+              label="Reports"
+              active={tab === "reports"}
+              onClick={() => setTab("reports")}
+              icon={<ChartPie className="size-[18px]" strokeWidth={1.75} />}
+            />
           </div>
         </nav>
       </div>
+
       {openId ? (
         <DetailSheet
           id={openId}
@@ -76,6 +115,7 @@ export function SpendApp() {
           }}
         />
       ) : null}
+
       <Toaster
         position="top-center"
         offset={16}
@@ -84,6 +124,8 @@ export function SpendApp() {
             background: "var(--color-card)",
             color: "var(--color-ink)",
             border: "1px solid var(--color-line)",
+            fontFamily: "var(--font-sans)",
+            fontSize: "0.875rem",
           },
         }}
       />
@@ -107,10 +149,14 @@ function NavButton({
       type="button"
       onClick={onClick}
       aria-current={active ? "page" : undefined}
-      className={`press flex min-w-0 flex-col items-center justify-center gap-1 px-0.5 text-[11px] font-medium min-[380px]:text-xs ${active ? "text-teal" : "text-muted"}`}
+      className={`press flex min-w-0 flex-col items-center justify-center gap-1 px-0.5 transition-colors ${
+        active ? "text-teal" : "text-muted hover:text-ink"
+      }`}
     >
       {icon}
-      <span className="max-w-full truncate">{label}</span>
+      <span className="section-tag" style={active ? { color: "var(--color-teal)" } : undefined}>
+        {label}
+      </span>
     </button>
   );
 }

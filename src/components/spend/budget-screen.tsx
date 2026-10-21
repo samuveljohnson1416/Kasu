@@ -21,16 +21,16 @@ export function BudgetScreen() {
     <div className="space-y-4 px-4">
       <ScreenHeader title="Budget" subtitle="Plans only. Editing these does not add expenses." />
       <MonthSwitcher />
-      <Card>
-        <p className="text-sm text-muted">Planned for a month</p>
-        <p className="mt-1 text-3xl font-medium tracking-tight text-ink tabular-nums">{formatINR(planned)}</p>
-        <p className={`mt-2 text-sm font-medium ${tone === "bad" ? "text-bad" : tone === "warn" ? "text-warn" : "text-good"}`}>
+      <Card className="p-4">
+        <p className="section-tag mb-1">Planned for a month</p>
+        <p className="mono mt-1 text-3xl font-bold tracking-tight text-ink tabular-nums">{formatINR(planned)}</p>
+        <p className={`mono mt-2 text-xs font-semibold ${tone === "bad" ? "text-bad" : tone === "warn" ? "text-warn" : "text-good"}`}>
           {formatINR(month.spendingPaise)} dated to {monthLabel(viewMonth)} · {remaining >= 0 ? `${formatINR(remaining)} left` : `${formatINR(Math.abs(remaining))} over`}
         </p>
-        <div className="mt-3">
+        <div className="mt-4">
           <Meter percent={percent} />
         </div>
-        <p className="mt-2 text-sm text-muted">{formatPercent(percent)} of the plan. Undated lines are not included.</p>
+        <p className="mono mt-2 text-xs text-muted">{formatPercent(percent)} used · undated lines excluded</p>
       </Card>
       <ul className="space-y-3">
         {budgets.map((line) => (
@@ -39,8 +39,8 @@ export function BudgetScreen() {
       </ul>
       {others.length > 0 ? (
         <section className="space-y-3">
-          <h2 className="text-sm font-medium text-muted">No monthly plan</h2>
-          <p className="text-sm text-muted">Still tracked. They are not part of the ₹ plan above.</p>
+          <p className="section-tag px-0.5">No monthly plan</p>
+          <p className="text-xs text-muted">Still tracked. Not part of the ₹ plan above.</p>
           {others.map((category) => (
             <OtherRow key={category} category={category} monthKey={viewMonth} />
           ))}
@@ -75,11 +75,11 @@ function BudgetRow({ line, monthKey }: { line: BudgetLine; monthKey: string }) {
 
   return (
     <li>
-      <Card>
-        <p className="font-medium text-ink">{line.label}</p>
-        {line.hint ? <p className="mt-1 text-sm text-muted">{line.hint}</p> : null}
-        <label className="mt-3 block text-sm text-muted">
-          Planned amount
+      <Card className="p-4">
+        <p className="text-sm font-bold text-ink">{line.label}</p>
+        {line.hint ? <p className="mt-1 text-xs text-muted">{line.hint}</p> : null}
+        <label className="mt-3 block">
+          <span className="section-tag mb-2 block">Planned amount</span>
           <input
             inputMode="decimal"
             aria-label={`Planned amount for ${line.label}`}
@@ -95,11 +95,11 @@ function BudgetRow({ line, monthKey }: { line: BudgetLine; monthKey: string }) {
                 commit();
               }
             }}
-            className="mt-2 h-12 w-full rounded-md border border-line bg-paper px-3 text-base text-ink tabular-nums"
+            className="mono h-11 w-full rounded-sm border border-line bg-surface px-3 text-sm text-ink tabular-nums focus:border-teal transition-colors"
           />
         </label>
-        {invalid ? <p className="mt-2 text-sm text-bad">Enter zero or a positive amount.</p> : null}
-        <dl className="mt-3 space-y-1 text-sm">
+        {invalid ? <p className="mt-1.5 text-xs text-bad">Enter zero or a positive amount.</p> : null}
+        <dl className="mt-3 space-y-1.5">
           <Info label="Spent this month" value={formatINR(monthSpent)} />
           <Info label={left >= 0 ? "Remaining" : "Over"} value={formatINR(Math.abs(left))} />
           {waiting > 0 ? <Info label="Waiting on a date" value={formatINR(waiting)} /> : null}
@@ -108,7 +108,7 @@ function BudgetRow({ line, monthKey }: { line: BudgetLine; monthKey: string }) {
         <div className="mt-3">
           <Meter percent={percent} />
         </div>
-        <p className="mt-2 text-sm text-muted">{formatPercent(percent)} of this line, this month only.</p>
+        <p className="mono mt-2 text-xs text-muted">{formatPercent(percent)} of this line, this month only.</p>
       </Card>
     </li>
   );
@@ -120,9 +120,9 @@ function OtherRow({ category, monthKey }: { category: string; monthKey: string }
   const waiting = spentForCategories(transactions, [category], { waiting: true });
   const elsewhere = spentForCategories(transactions, [category], { otherThan: monthKey });
   return (
-    <Card>
-      <p className="font-medium text-ink">{category}</p>
-      <dl className="mt-2 space-y-1 text-sm">
+    <Card className="p-4">
+      <p className="text-sm font-bold text-ink">{category}</p>
+      <dl className="mt-2 space-y-1.5">
         <Info label="This month" value={formatINR(monthSpent)} />
         {waiting > 0 ? <Info label="Waiting on a date" value={formatINR(waiting)} /> : null}
         {elsewhere > 0 ? <Info label="Other months" value={formatINR(elsewhere)} /> : null}
@@ -134,8 +134,8 @@ function OtherRow({ category, monthKey }: { category: string; monthKey: string }
 function Info({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex justify-between gap-3">
-      <dt className="text-muted">{label}</dt>
-      <dd className="font-medium text-ink tabular-nums">{value}</dd>
+      <dt className="section-tag pt-0.5">{label}</dt>
+      <dd className="mono text-sm font-semibold text-ink tabular-nums">{value}</dd>
     </div>
   );
 }
