@@ -1,0 +1,335 @@
+Build a Mobile App: My Student Expense Tracker
+
+1. Project Overview
+
+Build a fully functional, mobile-first personal expense tracker for a final-year college student living in a shared apartment in Chennai.
+
+App name: SpendWise Student
+
+Main goal: Help me control my spending, track every rupee, understand where my money goes, and avoid unnecessary purchases.
+
+I live in Alamelu Apartments in the Nungambakkam/Kodambakkam area. The room accommodates six people, and my college is approximately 2 km away.
+
+I depend mainly on outside food. I pay for rent, electricity, water, mess food, breakfast, snacks, toiletries, transport, college expenses, and other daily necessities.
+
+The app must be simple enough to use from my phone every day. Adding an expense should take less than 30 seconds.
+
+Important: Build a working application, not just a UI prototype. All buttons, calculations, forms, filters, and charts must work.
+
+2. Main Navigation
+
+Create five main sections:
+
+1. Home — Dashboard and current financial status.
+2. Add Expense — Quickly record a purchase or payment.
+3. Transactions — View, search, edit, and delete expenses.
+4. Budget — Set budgets and track overspending.
+5. Reports — Understand spending patterns over time.
+
+Use a clean bottom navigation bar suitable for Android phones.
+
+3. Add Expense Screen
+
+Create a simple form with these fields:
+
+- Date
+- Item name
+- Amount in ₹
+- Category
+- Payment method
+- Need or Want
+- Refundable deposit? Yes/No
+- Notes (optional)
+
+Categories must include:
+
+- Rent
+- Electricity
+- Water
+- Advance Deposit
+- Mess Food
+- Breakfast
+- Lunch
+- Dinner
+- Snacks
+- Tea and Coffee
+- Drinks
+- Groceries
+- Transport
+- Mobile Recharge
+- College Fees
+- Stationery
+- Toiletries
+- Laundry
+- Household Items
+- Electronics
+- Clothing
+- Footwear
+- Medical
+- Entertainment
+- Shopping
+- Emergency
+- Miscellaneous
+
+Payment methods: Cash, UPI, Card, Bank Transfer, and Not Specified.
+
+The app should remember the last-used categories where appropriate, allow amounts to be entered easily, and offer a quick-save action.
+
+When I save an expense, immediately update the dashboard, budgets, category totals, and reports.
+
+Allow transactions to be edited or deleted, with confirmation before deletion.
+
+4. Home Dashboard
+
+Design an attractive dashboard showing:
+
+- Total actual expenses
+- Total cash outflow
+- Refundable deposits
+- Current month's spending
+- Remaining monthly budget
+- Today's spending
+- Average daily spending
+- Total number of transactions
+- Largest expense
+- Highest-spending category
+
+Show a clear message about whether I am within my budget.
+
+Use a spending progress indicator:
+
+- Green: below 70% of budget used
+- Yellow: 70% to 90%
+- Red: above 90%
+
+Add a quick summary of my recent five transactions.
+
+Also display a warning when spending is increasing or a category has exceeded its planned budget. Keep the advice practical, such as reducing unnecessary snacks or avoiding expensive meals.
+
+5. Correct Financial Calculations
+
+This part is extremely important.
+
+Separate actual expenses from money paid as a refundable deposit.
+
+Use these definitions:
+
+Actual Expenses = Sum of all non-refundable transactions.
+
+Refundable Deposits = Sum of transactions marked refundable.
+
+Total Cash Outflow = Actual Expenses + Refundable Deposits.
+
+Remaining Budget = Monthly Budget − Actual Expenses for the selected month.
+
+Category Spending = Sum of transactions belonging to that category.
+
+Daily Spending = Sum of transactions on the selected date.
+
+Monthly Spending = Sum of transactions in the selected month, excluding refundable deposits.
+
+Never count the same payment twice.
+
+A refundable house advance must appear in cash outflow and refundable deposits, but not in ordinary living expenses or monthly spending.
+
+Allow me to select a month and view its calculations independently.
+
+6. Editable Monthly Budget
+
+Create an editable budget for planning purposes using these initial estimates:
+
+Category| Planned Monthly Amount
+Rent| ₹3,000
+Electricity| ₹200
+Water| ₹100
+Mess Food — Lunch and Dinner| ₹4,630
+Breakfast| ₹1,500
+Snacks| ₹1,200
+Transport| ₹500
+Mobile Recharge| ₹300
+Toiletries| ₹400
+Laundry| ₹250
+Medical| ₹300
+Stationery| ₹200
+Miscellaneous| ₹1,000
+Total| ₹13,580
+
+These are estimates, not actual transactions. Keep every budget editable, and do not add these values to the transaction history.
+
+The mess estimate includes ₹4,500 for food and ₹130 for delivery for 26 days.
+
+For each category, show:
+
+- Planned amount
+- Actual amount spent
+- Amount remaining
+- Percentage of budget used
+
+Allow me to change the budgets whenever necessary.
+
+Categories without an allocated budget should still be tracked and included in reports.
+
+7. Initial Expense History
+
+Import the following REAL transactions into the application. Do not invent additional purchases or dates.
+
+Amounts are in Indian rupees.
+
+For entries without a confirmed full date, preserve the original date information and let me correct it later. The day-only entries must not be assigned an invented month or year.
+
+Original date information| Item| Amount| Category
+Date unknown| House advance — refundable| ₹16,670.00| Advance Deposit
+Date unknown| Oom Mart| ₹62.83| Groceries
+Date unknown| Egg| ₹34.17| Food
+Date unknown| Charger wire| ₹102.00| Electronics
+Date unknown| Mess food| ₹2,000.00| Mess Food
+Date unknown| Duplicate gate key| ₹26.67| Household
+Date unknown| Wire| ₹14.00| Household
+17th, month/year unknown| Chicken puff| ₹27.00| Snacks
+17th, month/year unknown| Revaluation fee| ₹600.00| College Fees
+17th, month/year unknown| Yogurt drink| ₹30.00| Drinks
+17th, month/year unknown| Fruit mixer| ₹25.00| Drinks
+17th, month/year unknown| Water can| ₹60.00| Water
+18th, month/year unknown| Dinner| ₹75.00| Dinner
+20th, month/year unknown| Tea| ₹27.00| Tea and Coffee
+20th, month/year unknown| Biscuit| ₹10.00| Snacks
+20th, month/year unknown| Juice| ₹30.00| Drinks
+21st, month/year unknown| Sunday biryani| ₹140.00| Dinner
+19th, date written separately; verify| Kalan| ₹30.00| Snacks
+21st, month/year unknown| Slippers| ₹510.00| Footwear
+21st, month/year unknown| Yippee noodles for dinner| ₹43.00| Dinner
+21st, month/year unknown| Yogurt| ₹30.00| Food
+22nd, month/year unknown| Dosa| ₹40.00| Breakfast
+22nd, month/year unknown| Notes| ₹90.00| Stationery
+22nd, month/year unknown| Tea| ₹15.00| Tea and Coffee
+22nd, month/year unknown| Dosa| ₹20.00| Breakfast
+22nd, month/year unknown| Kalan| ₹35.00| Snacks
+22nd, month/year unknown| Fruit mixer| ₹25.00| Drinks
+22nd, month/year unknown| Bread| ₹10.67| Food
+23rd, month/year unknown| Lunch rice| ₹65.00| Lunch
+23rd, month/year unknown| Dinner| ₹60.00| Dinner
+24th, month/year unknown| Breakfast idly| ₹40.00| Breakfast
+24th, month/year unknown| Fruit mixer| ₹25.00| Drinks
+25th, month/year unknown| Egg puff| ₹50.00| Snacks
+25th, month/year unknown| Coffee| ₹30.00| Tea and Coffee
+25th, month/year unknown| Evening tea| ₹12.00| Tea and Coffee
+
+For the ₹16,670 advance, automatically set Refundable Deposit to Yes. All other entries should be editable.
+
+Payment method and Need/Want classifications were not provided, so leave them unassigned rather than guessing.
+
+Record the following as optional meal-log notes, not monetary transactions: “Only me lunch cut”, “Dinner cut”, and “Lunch and dinner cut”.
+
+Based on this list, the initial totals should reconcile to:
+
+- Recorded transactions excluding the advance: ₹4,394.34
+- Refundable advance: ₹16,670.00
+- Total cash outflow including the advance: ₹21,064.34
+
+Do not create transactions for the meal-log notes because they have no amounts.
+
+8. Transactions Screen
+
+Display transactions in a clean, searchable list.
+
+Features:
+
+- Search by item name
+- Filter by category
+- Filter by month and date
+- Filter by Need or Want
+- Sort by newest, oldest, highest amount, or lowest amount
+- Edit and delete transactions
+- View a selected transaction's details
+
+Show the item, category, date, and amount clearly.
+
+Allow day-only and undated historical entries to be corrected to complete dates later.
+
+9. Reports and Charts
+
+Create these reports using actual saved transactions:
+
+1. Pie chart for category-wise spending.
+2. Bar chart for monthly spending.
+3. Line chart for spending trends.
+4. Food versus non-food spending.
+5. Needs versus wants.
+6. Fixed versus variable expenses.
+7. Top ten largest transactions.
+8. Monthly budget versus actual spending.
+
+Do not include refundable advances in charts representing ordinary spending. They may appear separately in a cash-outflow report.
+
+Undated historical transactions should be included in overall totals but excluded from date-dependent reports until their dates are confirmed.
+
+10. Smart Saving Features
+
+Add a section called Save Money that helps identify:
+
+- Categories where I spend the most.
+- Repeated small purchases that accumulate over time.
+- Spending on wants versus necessities.
+- Remaining money available for the rest of the month.
+- Categories where spending should be reduced.
+
+Provide simple rules-based suggestions using actual recorded data. Do not display fake AI insights or invent spending patterns when insufficient data exists.
+
+Allow me to set a daily spending limit and show how much of it remains.
+
+11. Data Storage and Reliability
+
+The app must preserve my information after closing and reopening it.
+
+Use persistent local storage for the first version if a backend is not necessary.
+
+Implement:
+
+- Add, edit, and delete transactions.
+- Automatic calculations.
+- Data export as CSV.
+- Full backup and restore using JSON.
+- Currency formatting in Indian rupees.
+- Proper handling of empty data and missing dates.
+- Validation so negative or invalid amounts cannot accidentally be saved.
+- Confirmation before destructive operations.
+
+Do not require a paid API, external financial account connection, or login just to track expenses.
+
+Do not make the app depend on a temporary session or in-memory state alone.
+
+12. Visual Design
+
+Create a modern, lightweight Android-friendly interface.
+
+Use a clean white or light background, dark readable text, and restrained blue or teal accents.
+
+Requirements:
+
+- Responsive mobile layout.
+- Large, easy-to-tap controls.
+- Clear typography.
+- Minimal clutter.
+- Compact dashboard cards.
+- Readable charts.
+- Bottom navigation.
+- Fast loading and smooth interactions.
+
+The app should feel like a practical personal finance tool, not a complicated banking dashboard.
+
+13. Final Acceptance Requirements
+
+Before considering the app complete, verify that:
+
+1. Every screen works.
+2. Adding an expense updates the dashboard and reports.
+3. Editing or deleting an expense updates every affected total.
+4. The refundable advance is excluded from ordinary spending.
+5. Historical totals match the provided transaction list.
+6. Unknown dates are not fabricated.
+7. Budgets can be edited without changing transaction history.
+8. Data persists after the app is closed.
+9. CSV export and JSON backup work.
+10. The layout works properly on a mobile screen.
+
+Build the complete working app now. Prioritize correct calculations, reliable data storage, and fast daily expense entry over unnecessary animations or complicated features.

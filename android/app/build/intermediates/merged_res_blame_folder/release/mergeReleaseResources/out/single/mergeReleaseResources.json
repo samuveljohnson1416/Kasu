@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "app.kasu.app-release-42:/xml_file_paths.xml.flat",
+        "source": "app.kasu.app-main-43:/xml/file_paths.xml"
+    },
+    {
+        "merged": "app.kasu.app-release-42:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "app.kasu.app-main-43:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "app.kasu.app-release-42:/drawable_ic_kasu_fg.xml.flat",
+        "source": "app.kasu.app-main-43:/drawable/ic_kasu_fg.xml"
+    }
+]

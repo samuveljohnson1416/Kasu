@@ -1,0 +1,38 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "SpendWise",
+      "hasCanvas": false,
+      "bodyTextLen": 24,
+      "bodyTextHash": "004fc0a967597ff79037b890d9f5410a395bcc9d9d8fae8ef592dc78e0bdf560",
+      "bodyTextPrefix": "SpendWise Student ledger",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "SpendWise",
+      "hasCanvas": false,
+      "bodyTextLen": 1388,
+      "bodyTextHash": "98206f40e761befa6cdb319ef8e53e80cc9e1731b05b42fb25bb8391def2fadc",
+      "bodyTextPrefix": "SpendWise Student ledger October 2026 Recorded expenses ₹4,394.3",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [
+    "BRAND NOTE: no custom public/og.jpg — the platform will serve the og.grok.me placeholder. Custom cards are the default for games of every kind (DOM board/word games included), whimsical apps, creative tools, and brand-forward pages — only plain utilities (converters, CRUD trackers, admin dashboards) keep the placeholder. If this app is not a plain utility, finish the brand-asset pass per /workspace/.grok/skills/og/SKILL.md."
+  ],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
